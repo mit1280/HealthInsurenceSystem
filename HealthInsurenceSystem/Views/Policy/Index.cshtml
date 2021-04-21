@@ -1,0 +1,94 @@
+﻿@model IEnumerable<HealthInsurenceSystem.Models.Customer>
+@using Microsoft.AspNetCore.Http;
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Purchased Policy List</h2>
+        </div>
+    </div>
+
+    <br /><br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Policy Type
+                    </th>
+                    <th>
+                        Policy number
+                    </th>
+                    <th>
+                        Policy Purchased Name
+                    </th>
+                    <th>
+                        Premium Amount
+                    </th>
+                    <th>
+                        Last Payment Date
+                    </th>
+                    <th>
+                        Remaining Payment Duration
+                    </th>
+                    <th>
+                        Payment Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td width="50%">@obj.Ptype</td>
+                        <td width="30%">@obj.Pnumber</td>
+                        <td width="50%">@obj.Purchaseddate</td>
+                        <td width="30%">@obj.Amount</td>
+                        <td width="50%">@obj.Lastpayment</td>
+                        <td width="30%">@obj.Duration</td>
+                        <td>
+                            @if (obj.Lastpayment == null)
+                            {
+                                int p;
+                                DateTime pd = (DateTime)obj.Purchaseddate;
+                                DateTime now = DateTime.Today;
+                                @if(now.Month - pd.Month == 0)
+                                {
+                                     p = obj.Amount;
+                                }
+                                else
+                                {
+                                     p = obj.Amount * (now.Month - pd.Month);
+                                }
+                                Context.Session.SetString("Amount", p.ToString());
+                                 <a asp-controller = "Payment" asp-action = "PaymentPage" class="btn btn-primary"> Pay Now</a>
+                            }
+                            else
+                            {
+                                DateTime now = DateTime.Today;
+                                DateTime lp = (DateTime)obj.Lastpayment;
+                                if (now.Month - lp.Month > 0)
+                                {
+                                    int p = obj.Amount * (now.Month - lp.Month);
+                                    Context.Session.SetString("Amount", p.ToString());
+                                 <a asp-controller="Payment" asp-action="PaymentPage" class="btn btn-primary"> Pay Now </a>
+                                }
+                               else
+                                {
+                                        <a> Paid </a>
+                                }
+
+                            }
+                        </td>
+                    </tr>
+                                    }
+            </tbody>
+        </table>
+            }
+            else
+{
+            <p> Buy New Policy.</p>
+}
+
+</div>

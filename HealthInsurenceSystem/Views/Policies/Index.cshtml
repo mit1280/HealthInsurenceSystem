@@ -1,0 +1,76 @@
+﻿    @model IEnumerable<HealthInsurenceSystem.Models.Policy>
+
+<head>
+
+    <title>
+        Policy Recommendation Page
+    </title>
+</head>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Policies List</h2>
+        </div>
+        
+    </div>
+
+    <br/> <br/>
+
+    @if (Model.Count() > 0)
+    {
+
+        <table class="table table-bordered table-striped" style="width:100%">
+
+            <thead>
+                <tr>
+                    <th>
+                        Policy Type
+                    </th>
+                    <th>
+                        Minimum Age
+                    </th>
+                    <th>
+                        Maximum Age
+                    </th>
+                    <th>
+                        Month Premium
+                    </th>
+                    <th>
+                        Duration
+                    </th>
+                    <th> More Details</th>
+                    <th>Inquiry</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                <tr>
+                    <td width="15%">@obj.Ptype</td>
+                    <td width="10%">@obj.MinAge</td>
+                    <td width="10%">@obj.MaxAge</td>
+                    <td width="10%">@obj.MonthPremium</td>
+                    <td width="10%">@obj.Duration</td>
+                    <td width="15%"><a asp-controller="Policies"  asp-action=@obj.Ptype.Replace(" ", "") class="btn btn-primary">Know More </a></td>
+                    <td width="20%" class="text-center">
+                        <a asp-controller="Policies"   asp-action="addtocart" class="btn btn-success"> Interested </a>
+                        
+
+</td>
+                </tr>
+
+
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p> No new Policy exists</p>
+    }
+
+
+</div>
+
+

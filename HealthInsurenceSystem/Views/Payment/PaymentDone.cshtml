@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HealthInsurenceSystem.Models.Paymentlog>
+
+<head>
+
+    <title>
+        No Panding Payment Found
+    </title>
+</head>
+<div class="jumbotron text-center">
+    <h1 class="display-3">Thank You!</h1>
+
+    <p class="lead"><h3> Our record shows that you have paid premium for this month.</h3></p>
+    <hr><br />
+    <p>Paid Amount: $ @TempData["data"]</p><br />
+    <p>Transaction Date: $ @TempData["Ldate"]</p><br />
+    <p> See You Next Month.</p>
+    <br />
+    <p>
+       Buy our new Policy.
+    </p>
+    <p class="lead">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-sm">Go to Home</a>
+    </p>
+</div>

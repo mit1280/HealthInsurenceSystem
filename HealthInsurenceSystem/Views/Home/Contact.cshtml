@@ -1,0 +1,51 @@
+﻿@model HealthInsurenceSystem.Models.Contact
+    
+  <style>
+        
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        
+    </style>
+
+
+    <h3>Contact Form</h3>
+
+    <div class="list-group-item list-group-item-action list-group-item-secondary">
+        <form method="post"  asp-action="Contact">
+            <label for="Name">Name</label>
+            <input asp-for="Name" id="fname" class="form-control" placeholder="Enter Your Name"/>
+            <label for="Mnumber">Mobile Number</label><br/>
+            <input asp-for="Mnumber" id="lname" placeholder="Enter your Mobile Number" />
+            <br/>
+            <label for="subject">Subject</label>
+            <textarea id="subject" asp-for="Subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>

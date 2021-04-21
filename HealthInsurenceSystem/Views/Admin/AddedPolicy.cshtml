@@ -1,0 +1,54 @@
+﻿@model HealthInsurenceSystem.Models.Policy
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Added Policy List</h2>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Policy Type
+                </th>
+                <th>
+                    Minimum Age
+                </th>
+                <th>
+                    Maximum Age
+                </th>
+                <th>
+                    Monthly Premium Amount
+                </th>
+
+                <th>
+                    Duration
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td width="50%">
+                    @TempData["Ptype"]
+                </td>
+                <td width="30%">@TempData["min"] </td>
+                <td width="50%">@TempData["max"]</td>
+                <td width="50%">@TempData["pre"]</td>
+                <td width="30%">@TempData["dur"]</td>
+
+
+            </tr>
+            
+        </tbody>
+    </table>
+    <p class="lead">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-sm">Go to Home</a>
+    </p>
+
+</div>

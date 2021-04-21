@@ -1,0 +1,25 @@
+﻿@model HealthInsurenceSystem.Models.Customer
+@using Microsoft.AspNetCore.Http;
+<head>
+
+    <title>
+        Sold policy
+    </title>
+</head>
+<div class="jumbotron text-center">
+    <h1 class="display-3">congratulations!</h1>
+
+    <p class="lead"><h3> @Context.Session.GetString("emailID") sold policy to @Model.Cemail</h3></p>
+    <hr><br />
+    <p> Amount: $ @Model.Amount</p><br />
+    <p>Transaction Date: $ @Model.Purchaseddate</p><br />
+    <p> Policy Number: @Model.Pnumber</p>
+    <p> Total Installments: @Model.Duration</p>
+    <br />
+    <p>
+        Share this Information With The Customer and Remind them amount Payment.
+    </p>
+    <p class="lead">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-sm">Go to Home</a>
+    </p>
+</div>

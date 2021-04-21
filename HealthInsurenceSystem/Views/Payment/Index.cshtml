@@ -1,0 +1,39 @@
+﻿@model HealthInsurenceSystem.Models.Customer
+@using Microsoft.AspNetCore.Http;
+<h1>
+    <strong>
+        Quick Payment
+    </strong>
+</h1>
+
+<div class="list-group-item list-group-item-action list-group-item-secondary">
+    
+    <form class="form-group" method="post" asp-action="Index">
+        <div class="form-group mb-2">
+            <label for="staticEmail2" class="sr-only">Payment Details</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <br />
+
+            @if (Context.Session.GetInt32("emailError") != 1)
+            {
+                <label for="inputPassword2" class="sr-only">Cutomer Email Adress</label>
+                <input type="email" class="form-control" asp-for="Cemail" placeholder="Customer Email"><br />
+                <label for="inputPassword2" class="sr-only">Policy Number</label>
+                <input type="number" class="form-control" asp-for="Pnumber" placeholder="Policy Number"><br />
+            }
+            else
+            {
+                <label for="inputPassword2" class="sr-only">Cutomer Email Adress</label>
+                <label for="inputPassword2" class="sr-only">Policy Number</label>
+                <input type="email" class="form-control" asp-for="Cemail" placeholder="Customer Email"><br />
+
+                <input type="number" class="form-control" asp-for="Pnumber" placeholder="Policy Number"><br />
+                <b> Enter correct Email address and Policy Number</b>
+            }
+
+            <button type="submit" class="btn btn-primary mb-2">Check Premium</button>
+
+        </div>
+    </form>
+</div>

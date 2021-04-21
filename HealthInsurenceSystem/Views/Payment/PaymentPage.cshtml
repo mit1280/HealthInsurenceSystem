@@ -1,0 +1,96 @@
+﻿@model HealthInsurenceSystem.Models.Payment
+@using Microsoft.AspNetCore.Http;
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body {
+        margin-top: 20px;
+    }
+
+    .panel-title {
+        display: inline;
+        font-weight: bold;
+    }
+
+    .checkbox.pull-right {
+        margin: 0;
+    }
+
+    .pl-ziro {
+        padding-left: 0px;
+    }
+</style>
+@if (Context.Session.GetInt32("CardNumber") == 1)
+ {
+    <h1><b> Error in Credit card Information</b></h1>
+    <strong>Check the Information</strong>
+ }
+    <form method="post" asp-action="check">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Payment Details
+                            </h3>
+                        </div>
+
+
+                        <div class="panel-body">
+                            <input type="radio" id="Visa" name="type" value="Visa">
+                            <label for="Visa">Visa</label><br>
+                            <input type="radio" id="Master" name="type" value="Master">
+                            <label for="Master">Master</label><br>
+
+                            <div class="form-group">
+                                <label for="cardNumber">
+                                    CARD NUMBER
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Cardnumber" type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                           required autofocus />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-7 col-md-7">
+                                    <div class="form-group">
+                                        <label for="expityMonth">
+                                            EXPIRY DATE
+                                        </label>
+                                        <div>
+                                            <input asp-for="ExpiredDate" type="text" class="form-control" id="expityMonth" placeholder="MM/YYYY" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5 col-md-5 pull-right">
+                                    <div class="form-group">
+                                        <label for="cvCode">
+                                            CVV CODE
+                                        </label>
+                                        <input asp-for="Cvv" type="password" class="form-control" id="cvv" placeholder="CV" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        Final Payment is @if (Context.Session.GetInt32("loggedIn") != 1)
+                        {
+                            @TempData["Amount"]
+                        }
+                        else
+                        {
+                            @Context.Session.GetString("Amount");
+                        }
+                    </ul>
+                    <br />
+                    <input type="submit" value='Submit' class="btn btn-success btn-lg btn-block" />
+                </div>
+            </div>
+        </div>
+    </form>

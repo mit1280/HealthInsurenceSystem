@@ -1,0 +1,60 @@
+﻿@model HealthInsurenceSystem.Models.Policy
+@{
+    ViewData["Title"] = "deletefromcart";
+}
+
+<h1>Remove Policy from Cart</h1>
+<hr />
+<hr />
+<h2> Policy has been selected for removal</h2>
+
+
+
+<form method="post">
+    <input asp-for="Ptype" hidden />
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Click on Remove Policy to remove from Cart</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Ptype"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Ptype" class="form-control" />
+                        <span asp-validation-for="Ptype" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MonthPremium"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="MonthPremium" class="form-control" />
+                        <span asp-validation-for="MonthPremium" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                           <a asp-action="Index" class="btn btn-info w-100"> Remove Policy </a>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+
+</form>
